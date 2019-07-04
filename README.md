@@ -1,5 +1,5 @@
-# New reading discovery  
-## Application that takes in text and returns a similar topic text of different reading difficulty based on user need
+# Text Ascent
+## A tool to upskill with friends
 
 ### Business Understanding
 I’m a generalist, and I want to gain some niche topic understanding but don’t know where to begin. Here is an application that can take in text about the arts and sciences and return a more foundational piece of text of simpler reading level to support your understanding of the existing content. I'd like to simplify the process of finding related content that is of different reading level so readers of all levels can access a topic. Bonus, you won’t have to spend time scouring the web for something yourself. 
