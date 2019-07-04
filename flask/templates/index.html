@@ -20,10 +20,12 @@
 
   <!-- Custom CSS -->
   <link href="css/stylish-portfolio.min.css" rel="stylesheet">
-
+  <title>Predict</title>
+  <script type="text/javascript" src="brython.js"></script>
+  <script type="text/javascript" src="brython_stdlib.js"></script>
 </head>
 
-<body id="page-top">
+<body onload="brython(1)">
 
   <!-- Navigation -->
   <a class="menu-toggle rounded" href="#">
@@ -62,8 +64,35 @@
       <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
     </div>
     <div class="overlay"></div>
-  </header>
+ <!-- Predictions -->
+ <section>
+  <script type="text/python3">
+    from browser import document, ajax
+    import json
+    import warnings
 
+    def show_results(response):
+        if response.status==200 or response.status==0:
+            document["result"].html = response.text
+        else:
+            warnings.warn(response.text)
+
+    def get_prediction(ev):
+        """Get the predicted probability."""
+        req = ajax.ajax()
+        req.bind('complete', show_results)
+        req.open('POST', '/predict', True)
+        req.set_header('content-type','application/json')
+        data = json.dumps({'user_input': document['user_input'].value})
+        req.send(data)
+
+    document["predict_button"].bind("click", get_prediction)
+  </script>
+  <textarea id="user_input"></textarea>
+  <button id="predict_button">Predict!</button>
+  <div id="result"></div>
+</section>
+</header>
   <!-- About -->
   <section class="content-section bg-light" id="about">
     <div class="container text-center">
@@ -77,7 +106,7 @@
       </div>
     </div>
   </section>
-
+  
   <!-- Services -->
   <section class="content-section bg-primary text-white text-center" id="services">
     <div class="container">
@@ -204,13 +233,13 @@
   </section>
 
   <!-- Map -->
-  <section id="contact" class="map">
+  <!-- <section id="contact" class="map">
     <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
     <br />
     <small>
       <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
     </small>
-  </section>
+  </section> -->
 
   <!-- Footer -->
   <footer class="footer text-center">
