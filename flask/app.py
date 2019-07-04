@@ -6,15 +6,35 @@ from sklearn.pipeline import Pipeline
 import pickle
 from flask import Flask, request, render_template, jsonify
 
+<<<<<<< HEAD
 import os
 import numpy as np
 import textstat
 from sklearn.feature_extraction.text import TfidfVectorizer
 from scipy.spatial.distance import cosine, cdist
+=======
+
+# with open('spam_model.pkl', 'rb') as f:
+#     model = pickle.load(f)
+>>>>>>> c65b53df34df44008916583fc80a94d5464b2105
 
 with open(r"data/df_corpus2.pkl", "rb") as input_file:
     df_corpus2 = pickle.load(input_file)
 
+<<<<<<< HEAD
+=======
+with open (r"data/lda_model_1.pkl", "rb") as input_file:
+    lda_model_1 = pickle.load(input_file)
+    
+with open(r"data/df_best_category.pkl", "rb") as input_file:
+    df_best_category = pickle.load(input_file)
+    
+with open (r"data/dictionary.pkl", "rb") as input_file: 
+    dictionary = pickle.load(input_file)
+    
+   
+    
+>>>>>>> c65b53df34df44008916583fc80a94d5464b2105
 app = Flask(__name__, static_url_path="")
 
 @app.route('/')
@@ -22,6 +42,7 @@ def index():
     """Return the main page."""
     return render_template('index.html')
 
+<<<<<<< HEAD
 def load_vectorizer(pickle_file='data/vectorizer.pkl'):
     """Loads the trained TF/IDF vectorizer."""
     with open(pickle_file, 'rb') as f:
@@ -72,4 +93,13 @@ def predict():
     data = str(data)
     result = vectorize_text(data)
     return jsonify(result)
+=======
+
+@app.route('/predict', methods=['GET', 'POST'])
+def predict():
+    """Return a random prediction."""
+    data = request.json
+    prediction = model.predict_proba([data['user_input']])
+    return jsonify({'probability': prediction[0][1]})
+>>>>>>> c65b53df34df44008916583fc80a94d5464b2105
 
