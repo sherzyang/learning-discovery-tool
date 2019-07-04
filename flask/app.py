@@ -7,8 +7,23 @@ import pickle
 from flask import Flask, request, render_template, jsonify
 
 
-with open('spam_model.pkl', 'rb') as f:
-    model = pickle.load(f)
+# with open('spam_model.pkl', 'rb') as f:
+#     model = pickle.load(f)
+
+with open(r"data/df_corpus2.pkl", "rb") as input_file:
+    df_corpus2 = pickle.load(input_file)
+
+with open (r"data/lda_model_1.pkl", "rb") as input_file:
+    lda_model_1 = pickle.load(input_file)
+    
+with open(r"data/df_best_category.pkl", "rb") as input_file:
+    df_best_category = pickle.load(input_file)
+    
+with open (r"data/dictionary.pkl", "rb") as input_file: 
+    dictionary = pickle.load(input_file)
+    
+   
+    
 app = Flask(__name__, static_url_path="")
 
 @app.route('/')
