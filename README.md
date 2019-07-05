@@ -21,3 +21,4 @@ I will use log-likelihood ratio to score this model.
 ### Deployment 
 This application will live as a flask enabled webpage. In the next iteration, I will deploy a version as a chrome extension. 
 
+## Citations: 
