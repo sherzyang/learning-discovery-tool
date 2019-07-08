@@ -85,16 +85,13 @@
         data = json.dumps({'user_input': document['user_input'].value})
         req.send(data)
       
-    def get_different_level(ev):
+    def update_slider(ev):
         """Get another level."""
-        req = ajax.ajax()
-        req.bind('complete', show_results)
-        req.open('POST', '/level', True)
-        req.set_header('content-type','application/json')
-        data = json.dumps({'user_input': document['user_input'].value})
-        req.send(data)
+        traverse = document['text_slider'].value
+        document['text_slider_label'].textContent = traverse
 
     document["predict_button"].bind("click", get_prediction)
+    document[“text_slider”].bind(“change”, update_slider)
   </script>
   <textarea id="user_input" cols="70" rows="5"></textarea>
   <button id="predict_button">Traverse!</button>
@@ -105,17 +102,9 @@
       <br />
       <div class="slidecontainer">
           <br />
-          <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-          <output data-output></output></output>   
+          <input type="range" min="1" max="100" value="50" class="slider" id="text_slider">
+          <span id='text_slider_label'>5</span>   
       </div>
-      <script>
-          var slider = document.getElementById("myRange");
-          var output = document.getElementById("demo");
-          output.innerHTML = slider.value; // Display the default slider value
-          // Update the current slider value (each time you drag the slider handle)
-          slider.oninput = function() {
-          output.innerHTML = this.value;}
-      </script>
   </form> 
 </section>
 </div>
