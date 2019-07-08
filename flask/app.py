@@ -13,6 +13,16 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from scipy.spatial.distance import cosine, cdist
 import requests
 
+import textstat
+import operator
+import gensim
+from gensim.utils import simple_preprocess
+from gensim.parsing.preprocessing import STOPWORDS
+from nltk.stem import WordNetLemmatizer, SnowballStemmer
+from nltk.stem.porter import *
+import numpy as np
+from operator import itemgetter
+
 app = Flask(__name__, static_url_path="")
     
 # with open(r"data/new_corpus.pkl", "rb") as input_file:
