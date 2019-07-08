@@ -84,14 +84,8 @@
         req.set_header('content-type','application/json')
         data = json.dumps({'user_input': document['user_input'].value})
         req.send(data)
-      
-    def update_slider(ev):
-        """Get another level."""
-        traverse = document['text_slider'].value
-        document['text_slider_label'].textContent = traverse
 
     document["predict_button"].bind("click", get_prediction)
-    document[“text_slider”].bind(“change”, update_slider)
   </script>
   <textarea id="user_input" cols="70" rows="5"></textarea>
   <button id="predict_button">Traverse!</button>
