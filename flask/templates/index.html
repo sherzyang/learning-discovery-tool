@@ -19,19 +19,11 @@
   <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
 
   <!-- Custom CSS -->
-  <link href="css/stylish-portfolio.min.css" rel="stylesheet">
-  <title>Predict</title>
+  <link href="css/stylish-portfolio.css" rel="stylesheet">
+  <title>Traverse</title>
   <script type="text/javascript" src="brython.js"></script>
   <script type="text/javascript" src="brython_stdlib.js"></script>
 
-  <script>
-  var slider = document.getElementById("myRange");
-  var output = document.getElementById("demo");
-  output.innerHTML = slider.value; // Display the default slider value
-  // Update the current slider value (each time you drag the slider handle)
-  slider.oninput = function() {
-  output.innerHTML = this.value;}
-</script>
 </head>
 
 <body onload="brython(1)">
@@ -85,22 +77,46 @@
             warnings.warn(response.text)
 
     def get_prediction(ev):
-        """Get the predicted probability."""
+        """Get the predicted text."""
         req = ajax.ajax()
         req.bind('complete', show_results)
         req.open('POST', '/predict', True)
         req.set_header('content-type','application/json')
         data = json.dumps({'user_input': document['user_input'].value})
         req.send(data)
+      
+    def get_different_level(ev):
+        """Get another level."""
+        req = ajax.ajax()
+        req.bind('complete', show_results)
+        req.open('POST', '/level', True)
+        req.set_header('content-type','application/json')
+        data = json.dumps({'user_input': document['user_input'].value})
+        req.send(data)
 
     document["predict_button"].bind("click", get_prediction)
   </script>
-  <textarea id="user_input"></textarea>
-  <button id="predict_button">Predict!</button>
+  <textarea id="user_input" cols="70" rows="5"></textarea>
+  <button id="predict_button">Traverse!</button>
   <div id="result"></div>
-  <div class="slidecontainer">
-    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-  </div>
+  <br /><br />
+  <form id="form1" runat="server">
+      Altitude: <span id="spanOutp"></span>
+      <br />
+      <div class="slidecontainer">
+          <br />
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+          <output data-output></output></output>   
+      </div>
+      <script>
+          var slider = document.getElementById("myRange");
+          var output = document.getElementById("demo");
+          output.innerHTML = slider.value; // Display the default slider value
+          // Update the current slider value (each time you drag the slider handle)
+          slider.oninput = function() {
+          output.innerHTML = this.value;}
+      </script>
+  </form> 
 </section>
 </div>
 <div class="overlay"></div>
