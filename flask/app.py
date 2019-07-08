@@ -13,14 +13,8 @@ import textstat
 from sklearn.feature_extraction.text import TfidfVectorizer
 from scipy.spatial.distance import cosine, cdist
 
-with open(r"data/df_corpus2.pkl", "rb") as input_file:
-    df_corpus2 = pickle.load(input_file)
-
-with open (r"data/lda_model_1.pkl", "rb") as input_file:
-    lda_model_1 = pickle.load(input_file)
-    
-with open(r"data/df_best_category.pkl", "rb") as input_file:
-    df_best_category = pickle.load(input_file)
+with open(r"data/new_corpus.pkl", "rb") as input_file:
+    new_corpus = pickle.load(input_file)
     
 with open (r"data/dictionary.pkl", "rb") as input_file: 
     dictionary = pickle.load(input_file)
@@ -66,7 +60,7 @@ def vectorize_text(text):
     )
     
     nearest_article_idxs = np.argsort(distances)
-    nearest_articles = df_corpus2.loc[nearest_article_idxs[0], :]
+    nearest_articles = new_corpus.loc[nearest_article_idxs[0], :]
     top_10 = nearest_articles[:10]
     top_df = top_10.sort_values(['score'])
     article_num = str(nearest_articles[:1].index)
@@ -77,6 +71,14 @@ def vectorize_text(text):
 
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
+    """Return a new article."""
+    data = request.json
+    data = str(data)
+    result = vectorize_text(data)
+    return jsonify(result)
+
+@app.route('/level', methods=['GET', 'POST'])
+def level():
     """Return a new article."""
     data = request.json
     data = str(data)
