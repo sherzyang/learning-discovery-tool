@@ -11,6 +11,7 @@ import numpy as np
 import textstat
 from sklearn.feature_extraction.text import TfidfVectorizer
 from scipy.spatial.distance import cosine, cdist
+import requests
 
 app = Flask(__name__, static_url_path="")
     
