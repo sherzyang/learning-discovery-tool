@@ -90,11 +90,6 @@
   <textarea id="user_input" cols="70" rows="5"></textarea>
   <!-- <button id="predict_button">Traverse!</button> -->
   <a id="move_down" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#about">Traverse!</a>
-  <div class="slidecontainer">
-      <br />
-      <input type="range" min="1" max="100" value="50" class="slider" id="text_slider">
-      <span id='text_slider_label'></span>   
-  </div> 
 </section>
 </div>
 <div class="overlay"></div>
@@ -103,10 +98,10 @@
 <!--About-->
   <section class="content-section bg-light" id="about">
     <div class="container text-center">
-        <div id="result"></div>
       <div class="row">
         <div class="col-lg-10 mx-auto">
-          <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">Traverse!</a>
+            <div id="result"></div>
+          <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">Level Up</a>
         </div>
       </div>
     </div>
@@ -116,10 +111,15 @@
   <section class="content-section bg-primary text-white text-center" id="services">
     <div class="container">
       <div class="content-section-heading">
-        <h3 class="text-secondary mb-0">Services</h3>
-        <h2 class="mb-5">What We Offer</h2>
+        <div class="slidecontainer">
+                <br />
+                <input type="range" min="1" max="100" value="50" class="slider" id="text_slider">
+                <span id='text_slider_label'></span>   
+            </div> 
+        <!-- <h3 class="text-secondary mb-0">Services</h3>
+        <h2 class="mb-5">What We Offer</h2> -->
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
           <span class="service-icon rounded-circle mx-auto mb-3">
             <i class="icon-screen-smartphone"></i>
@@ -133,8 +133,8 @@
           <span class="service-icon rounded-circle mx-auto mb-3">
             <i class="icon-pencil"></i>
           </span>
-          <h4>
-            <strong>Redesigned</strong>
+          <h4> -->
+            <!-- <strong>Redesigned</strong>
           </h4>
           <p class="text-faded mb-0">Freshly redesigned for Bootstrap 4.</p>
         </div>
@@ -159,7 +159,7 @@
           <p class="text-faded mb-0">I mustache you a question...</p>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
 
   <!--Callout--> 
@@ -168,7 +168,7 @@
       <h2 class="mx-auto mb-5">Welcome to
         <em>your</em>
         next website!</h2>
-      <a class="btn btn-primary btn-xl" href="https://startbootstrap.com/template-overviews/stylish-portfolio/">Download Now!</a>
+      <!-- <a class="btn btn-primary btn-xl" href="https://startbootstrap.com/template-overviews/stylish-portfolio/">Download Now!</a> -->
     </div>
   </section> 
 
