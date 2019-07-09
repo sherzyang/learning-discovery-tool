@@ -13,7 +13,10 @@ html {
 body {
   font-family: 'Source Sans Pro';
 }
-
+div {
+display: block;
+overflow: auto;
+}
 .btn-xl {
   padding: 1.25rem 2.5rem;
 }
