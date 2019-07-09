@@ -1,7 +1,5 @@
 # Files
 data/*
-traverse_flask/data/*
-flask/data/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
