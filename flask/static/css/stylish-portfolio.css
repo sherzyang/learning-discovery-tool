@@ -48,6 +48,9 @@ h6 {
   width: 100%; /* Width of the outside container */
 }
 
+.slidecontainer.simpler { float:right }
+.slidecontainer.complex { float:left }
+
 /* The slider itself */
 .slider {
   -webkit-appearance: none;
@@ -72,7 +75,7 @@ h6 {
   width: 25px;
   height: 25px;
   border-radius: 50%; 
-  background: #4CAF50;
+  background: #383737;
   cursor: pointer;
 }
 
@@ -80,7 +83,7 @@ h6 {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #4CAF50;
+  background: #383737;
   cursor: pointer;
 }
 
@@ -151,8 +154,8 @@ h6 {
   height: auto;
   padding-top: 8rem;
   padding-bottom: 8rem;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.1))), url("../img/katya-austin-uesPVQY0TkA-unsplash.jpg");
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../img/katya-austin-uesPVQY0TkA-unsplash.jpg");
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.1))), url("../img/ted-bryan-yu-5mezpWin6T8-unsplash.jpg");
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../img/ted-bryan-yu-5mezpWin6T8-unsplash.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -386,9 +389,9 @@ a {
   color: rgb(99, 100, 100);
 }
 
-a:hover, a:focus, a:active {
+/* a:hover, a:focus, a:active {
   color: #aaabac;
-}
+} */
 
 .btn-primary {
   background-color: #FFE599 !important;
@@ -398,7 +401,7 @@ a:hover, a:focus, a:active {
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
   background-color: #FFE599 !important;
-  border-color: #FFE599 !important;
+  /* border-color: #FFE599 !important; */
 }
 
 .btn-secondary {
@@ -409,7 +412,7 @@ a:hover, a:focus, a:active {
 
 .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
   background-color: #FFE599 !important;
-  border-color: #FFE599 !important;
+  /* border-color: #FFE599 !important; */
 }
 
 .btn-dark {
@@ -427,11 +430,11 @@ a:hover, a:focus, a:active {
 }
 
 .text-primary {
-  color: rgb(68, 68, 68) !important;
+  color: #FFE599 !important;
 }
 
 .text-secondary {
-  color: rgb(85, 85, 84) !important;
+  color: r#FFE599 !important;
 }
 
 
