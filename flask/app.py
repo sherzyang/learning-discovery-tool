@@ -136,7 +136,7 @@ def get_level_change(x,text):
     level_change = top_50_df['content'][article_id]
     return level_change
 
-@app.route('/level_up', methods=['GET', 'POST'])
+@app.route('/traverse', methods=['GET', 'POST'])
 def level_up():
     """Return a new article."""
     data = request.json
