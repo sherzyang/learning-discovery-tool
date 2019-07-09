@@ -2,13 +2,12 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Stylish Portfolio - Start Bootstrap Template</title>
+  <title>Text Ascent</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -20,10 +19,11 @@
 
   <!-- Custom CSS -->
   <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+  <!-- Enable Brython -->
   <title>Traverse</title>
   <script type="text/javascript" src="brython.js"></script>
   <script type="text/javascript" src="brython_stdlib.js"></script>
-
 </head>
 
 <body onload="brython(1)">
@@ -35,9 +35,9 @@
       <h3 class="mb-5">
         <em>A tool to upskill with friends</em>
       </h3>
+    </div>
 
- <!-- Predictions -->
- <section>
+ <!-- Brython Functions -->
   <script type="text/python3">
     from browser import document, ajax
     import json
@@ -57,75 +57,105 @@
         req.set_header('content-type','application/json')
         data = json.dumps({'user_input': document['user_input'].value})
         req.send(data)
-
+    
     document["move_down"].bind("click", get_prediction)
-    document[“text_slider”].bind(“change”, update_text_slider_label)
-
+    
+    def update_traverse_slider_label(ev):
+        traverse_slide_val = document["text_slider"].value
+        document["text_slider"].textContent = traverse_slide_val
+    
+    def get_traverse(ev):
+        """Get the new level article."""
+        req = ajax.ajax()
+        req.bind('complete', get_random_cities)
+        req.open('POST', '/traverse', False)
+        req.set_header('content-type','application/json')
+        user_inputs = {
+            'user_input_traverse': document['text_slider'].value,
+          }
+        data = json.dumps(user_inputs)
+        req.send(data)
+    
+    def get_random_cities(response):
+        if response.status==200 or response.status==0:
+            cities = json.loads(response.text)
+            change_place_names(cities)
+        else:
+            warnings.warn(response.text)
+    
+    document["text_slider"].bind("change", update_traverse_slider_label)
   </script>
+
+<!-- Masthead -->
+<section>
+<div class="overlay"></div>
     <div>
       <textarea id="user_input" cols="70" rows="5">How to start: delete this text and paste in two sentences or more of anything you're reading. You'll get the most similar article in our library back. Then you can change the reading difficulty and learn more about the topic!</textarea>
     </div>
-  
-  <!-- <button id="predict_button">Traverse!</button> -->
-  <div>
-      <a id="move_down" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#about">Traverse!</a>
-  </div>
+    <br />
+    <div>
+      <a id="move_down" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#traverse">Traverse!</a>
+   </div>
+   <br /><br />
+    <h6>Photo by Ted Bryan Yu on Unsplash</h6>
 </section>
-<h6>Photo by Katya Austin on Unsplash</h6>
-<div class="overlay"></div>
 </header>
 
-<!--First Result-->
-  <section class="content-section bg-light" id="about">
-    <div class="container text-center">
-      <div class="row">
-        <!-- <div class="col-lg-10 mx-auto"> -->
-        <h3>This is an article that's related to your topic. Want to read something simpler or more challenging? Select Read On!</h3>
-            <div class="container text-center">
-              <a class="btn btn-dark btn-xl js-scroll-trigger" href="#read_on">Read On</a>
-            </div>
-            <div id="result"></div>
+<!-- First Result -->
+<section class="content-section bg-light" id="traverse">
+  <div class="container text-center">
+    <div class="row">
+      <h3>This is an article that's related to your topic. Want to read something simpler or more challenging? Select Read On!</h3>
+          <div class="container text-center">
+              <a id="move_down" class="btn btn-dark btn-xl js-scroll-trigger" href="#read_on">Read On</a>
+          </div>
+          <div id="result"></div>
             <br />
-        </div>
-      </div>
     </div>
+  </div>
   </section>
   
-  <!--Read On-->
-  <section class="content-section bg-primary text-white text-center" id="read_on">
+  <!-- Traverse Again -->
+  <section class="content-section bg-primary text-center" id="read_on">
     <div class="container">
       <div class="content-section-heading">
         <h1>Slide the scale and then select Traverse!</h1>
         <div class="slidecontainer">
-                <br />
-                <label>Base Camp: Simpler Content</label>
+                <span class="Simpler">Base Camp: Simpler Content</span>
                 <input type="range" min="1" max="100" value="50" class="slider" id="text_slider">
-                <span id='text_slider_label'></span> 
-                <label>Summit: More Complex Content</label>  
-            </div> 
+                <span class="Complex">Summit: More Complex Content</span>  
+                <span id='text_slider_label'>50</span> 
+        </div> 
+            <br />
+        <div>
+          <a class="btn btn-dark btn-xl js-scroll-trigger" href="#new_read">Traverse!</a>
+        </div>
       </div>
+    </div>
   </section>
 
-  <!--Result of Read On-->
-  <section class="content-section bg-light" id="about">
+  <!-- Result of Traverse Again -->
+  <section class="content-section bg-light" id="new_read">
       <div class="container text-center">
-          <h3>This is an article that is a different level</h3>
+          <h3>This is an article that is a different level read.</h3>
         <div class="row">
               <div class="container text-center">
                   <div id="result"></div>
-                <a class="btn btn-dark btn-xl js-scroll-trigger" href="#read_on">Find Another</a>
+                <a id="move_up" class="btn btn-dark btn-xl js-scroll-trigger" href="#read_on">Find Another</a>
               </div>
               <br />
-          </div>
         </div>
       </div>
-    </section>
+  </section>
 
-  <!--Hiking Image--> 
+  <!-- Hiking Image --> 
   <section class="callout">
-    <div class="container text-center">
-    </div>
   </section> 
+
+  <!-- Methodology -->
+  <section>
+    <h2>How does this work?</h2>
+  </section>
 
   <!-- Footer -->
   <footer class="footer text-center">
