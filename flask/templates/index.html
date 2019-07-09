@@ -29,7 +29,7 @@
 <body onload="brython(1)">
 
   <!-- Navigation -->
-  <!-- <a class="menu-toggle rounded" href="#">
+  <a class="menu-toggle rounded" href="#">
     <i class="fas fa-bars"></i>
   </a>
   <nav id="sidebar-wrapper">
@@ -53,7 +53,7 @@
         <a class="js-scroll-trigger" href="#contact">Contact</a>
       </li>
     </ul>
-  </nav>  -->
+  </nav> 
 
   <!-- Header -->
   <header class="masthead d-flex">
@@ -84,6 +84,9 @@
         req.set_header('content-type','application/json')
         data = json.dumps({'user_input': document['user_input'].value})
         req.send(data)
+    
+    def scroll_to_random(ev):
+        document["random"].scrollIntoView()
 
     document["predict_button"].bind("click", get_prediction)
   </script>
@@ -100,8 +103,7 @@
 <div class="overlay"></div>
 </header>
 
-
-  <!-- About
+<!--About-->
   <section class="content-section bg-light" id="about">
     <div class="container text-center">
       <div class="row">
@@ -113,10 +115,10 @@
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
   
   <!-- Services -->
-  <!-- <section class="content-section bg-primary text-white text-center" id="services">
+  <section class="content-section bg-primary text-white text-center" id="services">
     <div class="container">
       <div class="content-section-heading">
         <h3 class="text-secondary mb-0">Services</h3>
@@ -165,7 +167,7 @@
     </div>
   </section>
 
-  Callout 
+  <!--Callout--> 
   <section class="callout">
     <div class="container text-center">
       <h2 class="mx-auto mb-5">Welcome to
@@ -175,7 +177,7 @@
     </div>
   </section> 
 
-  Portfolio -->
+  <!--Portfolio -->
   <!-- <section class="content-section" id="portfolio">
     <div class="container">
       <div class="content-section-heading text-center">
