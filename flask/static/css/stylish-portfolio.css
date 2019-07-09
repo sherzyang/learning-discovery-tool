@@ -18,7 +18,7 @@ display: block;
 overflow: auto;
 }
 .btn-xl {
-  padding: 1.25rem 2.5rem;
+  padding: 1rem 2rem;
 }
 
 .content-section {
@@ -391,9 +391,9 @@ a:hover, a:focus, a:active {
 }
 
 .btn-primary {
-  background-color: #1D809F !important;
-  border-color: #1D809F !important;
-  color: #fff !important;
+  background-color: #FFE599 !important;
+  border-color: #FFE599 !important;
+  color: #383737 !important;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
@@ -404,7 +404,7 @@ a:hover, a:focus, a:active {
 .btn-secondary {
   background-color: #ecb807 !important;
   border-color: #ecb807 !important;
-  color: #fff !important;
+  color: #383737 !important;
 }
 
 .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
@@ -413,7 +413,7 @@ a:hover, a:focus, a:active {
 }
 
 .btn-dark {
-  color: #fff !important;
+  color: #383737 !important;
 }
 
 .btn {
