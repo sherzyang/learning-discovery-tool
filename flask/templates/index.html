@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Text Ascent</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+  <!-- Enable Brython -->
+  <title>Traverse</title>
+  <script type="text/javascript" src="brython.js"></script>
+  <script type="text/javascript" src="brython_stdlib.js"></script>
+</head>
+
+<body onload="brython(1)">
+
+  <!-- Brython Functions -->
+  <script type="text/python3">
+    from browser import document, ajax
+    import json
+    import warnings
+
+    def show_results(response):
+        if response.status==200 or response.status==0:
+            document["result"].html = response.text
+        else:
+            warnings.warn(response.text)
+
+    def get_prediction(ev):
+        """Get the predicted text."""
+        req = ajax.ajax()
+        req.bind('complete', show_results)
+        req.open('POST', '/predict', True)
+        req.set_header('content-type','application/json')
+        data = json.dumps({'user_input': document['user_input'].value})
+        req.send(data)
+    
+    document["move_down"].bind("click", get_prediction)
+    
+    def update_traverse_slider_label(ev):
+        traverse_slide_val = document["text_slider"].value
+        document["text_slider"].textContent = traverse_slide_val
+    
+    def get_traverse(ev):
+        """Get the new level article."""
+        req = ajax.ajax()
+        req.bind('complete', get_random_cities)
+        req.open('POST', '/traverse', False)
+        req.set_header('content-type','application/json')
+        user_inputs = {
+            'user_input_traverse': document['text_slider'].value,
+          }
+        data = json.dumps(user_inputs)
+        req.send(data)
+    
+    def get_random_cities(response):
+        if response.status==200 or response.status==0:
+            cities = json.loads(response.text)
+            change_place_names(cities)
+        else:
+            warnings.warn(response.text)
+    
+    document["text_slider"].bind("change", update_traverse_slider_label)
+  </script>
+
+<!-- Navigation -->
+<a class="menu-toggle rounded" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a class="js-scroll-trigger" href="#page-top">Text Ascent</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#page-top">Home</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#about">About</a>
+      </li>
+    </ul>
+</nav>
+
+<!-- Header -->
+<header class="masthead d-flex" id="page-top">
+  <div class="container text-center my-auto">
+    <h1 class="mb-1">Text Ascent</h1>
+    <h3 class="mb-5">
+      <em>A tool to upskill with friends</em>
+    </h3>
+
+<!-- Masthead -->
+<section>
+<div class="overlay"></div>
+    <div>
+      <textarea id="user_input" cols="70" rows="5">How to start: delete this text and paste in two sentences or more of anything you're reading. You'll get the most similar article in our library back. Then you can change the reading difficulty and learn more about the topic!</textarea>
+    </div>
+    <br />
+    <div>
+      <a id="move_down" class="btn btn-primary btn-xl js-scroll-trigger" href="#traverse">Traverse!</a>
+   </div>
+   <br /><br /><br /><br />
+    <h6>Photo by Ted Bryan Yu on Unsplash</h6>
+</section>
+</div>
+</header>
+
+<!-- First Result -->
+<section class="content-section bg-light" id="traverse">
+  <div class="container text-center">
+    <div class="row">
+      <h3>This is an article that's related to your topic. Want to read something simpler or more challenging? Select Read On!</h3>
+          <div class="container text-center">
+              <a id="move_down" class="btn btn-dark btn-xl js-scroll-trigger" href="#read_on">Read On</a>
+          </div>
+          <div id="result"></div>
+            <br />
+    </div>
+  </div>
+  </section>
+  
+  <!-- Traverse Again -->
+  <section class="content-section bg-primary text-center" id="read_on">
+    <div class="container">
+      <div class="content-section-heading">
+        <h1>Slide the scale and then select Traverse!</h1>
+        <div class="slidecontainer">
+                <span class="Simpler">Base Camp: Simpler Content</span>
+                <input type="range" min="1" max="100" value="50" class="slider" id="text_slider">
+                <span class="Complex">Summit: More Complex Content</span>  
+                <span id='text_slider_label'>50</span> 
+        </div> 
+            <br />
+        <div>
+          <a class="btn btn-dark btn-xl js-scroll-trigger" href="#new_read">Traverse!</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Result of Traverse Again -->
+  <section class="content-section bg-primary" id="new_read">
+      <div class="container text-center">
+          <h3>This is an article that is a different level read.</h3>
+        <div class="row">
+              <div class="container text-center">
+                  <div id="result"></div>
+                <a id="move_up" class="btn btn-dark btn-xl js-scroll-trigger" href="#read_on">Find Another</a>
+              </div>
+              <br />
+        </div>
+      </div>
+      <a href="mailto:enteryour@addresshere.com?subject=Website Name&body=Link to website, short description">Send me an email</a>
+
+  </section>
+
+  <!-- Methodology -->
+  <section class="content-section bg-primary" id="about">
+    <div class="container text-center">
+      <h2>How does this work?</h2>
+      <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQy9PxcakkLPt9Soc9iCNb-ikNgN9kWBjfA7WgB0u3TW16hL605XUwsW15seKhjXkK2xgv_YFWD1SXC/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+    </div>
+  </section>
+
+  <!-- Hiking Image --> 
+  <section class="callout">
+  </section> 
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <ul class="list-inline mb-5">
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white mr-3" href="https://www.linkedin.com/in/sherzyang">
+            <i class="icon-social-linkedin"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white mr-3" href="https://www.twitter.com/@sherzyang">
+            <i class="icon-social-twitter"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white" href="https://www.github.com/sherzyang">
+            <i class="icon-social-github"></i>
+          </a>
+        </li>
+      </ul>
+      <p class="text-muted small mb-0">Copyright &copy; Sherry Yang 2019</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/stylish-portfolio.min.js"></script>
+
+</body>
+
+</html>
