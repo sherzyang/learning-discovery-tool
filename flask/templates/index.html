@@ -84,15 +84,12 @@
         req.set_header('content-type','application/json')
         data = json.dumps({'user_input': document['user_input'].value})
         req.send(data)
-    
-    def scroll_to_random(ev):
-        document["random"].scrollIntoView()
 
-    document["predict_button"].bind("click", get_prediction)
+    document["move_down"].bind("click", get_prediction)
   </script>
   <textarea id="user_input" cols="70" rows="5"></textarea>
-  <button id="predict_button">Traverse!</button>
-  <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#about">Traverse!</a>
+  <!-- <button id="predict_button">Traverse!</button> -->
+  <a id="move_down" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#about">Traverse!</a>
   <div class="slidecontainer">
       <br />
       <input type="range" min="1" max="100" value="50" class="slider" id="text_slider">
