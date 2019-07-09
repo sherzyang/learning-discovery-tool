@@ -28,16 +28,7 @@
 
 <body onload="brython(1)">
 
-  <!-- Header -->
-  <header class="masthead d-flex">
-    <div class="container text-center my-auto">
-      <h1 class="mb-1">Text Ascent</h1>
-      <h3 class="mb-5">
-        <em>A tool to upskill with friends</em>
-      </h3>
-    </div>
-
- <!-- Brython Functions -->
+  <!-- Brython Functions -->
   <script type="text/python3">
     from browser import document, ajax
     import json
@@ -86,6 +77,32 @@
     document["text_slider"].bind("change", update_traverse_slider_label)
   </script>
 
+<!-- Navigation -->
+<a class="menu-toggle rounded" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a class="js-scroll-trigger" href="#page-top">Text Ascent</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#page-top">Home</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#about">About</a>
+      </li>
+    </ul>
+</nav>
+
+<!-- Header -->
+<header class="masthead d-flex" id="page-top">
+  <div class="container text-center my-auto">
+    <h1 class="mb-1">Text Ascent</h1>
+    <h3 class="mb-5">
+      <em>A tool to upskill with friends</em>
+    </h3>
+
 <!-- Masthead -->
 <section>
 <div class="overlay"></div>
@@ -94,11 +111,12 @@
     </div>
     <br />
     <div>
-      <a id="move_down" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#traverse">Traverse!</a>
+      <a id="move_down" class="btn btn-primary btn-xl js-scroll-trigger" href="#traverse">Traverse!</a>
    </div>
    <br /><br />
     <h6>Photo by Ted Bryan Yu on Unsplash</h6>
 </section>
+</div>
 </header>
 
 <!-- First Result -->
@@ -135,7 +153,7 @@
   </section>
 
   <!-- Result of Traverse Again -->
-  <section class="content-section bg-light" id="new_read">
+  <section class="content-section bg-primary" id="new_read">
       <div class="container text-center">
           <h3>This is an article that is a different level read.</h3>
         <div class="row">
@@ -148,14 +166,17 @@
       </div>
   </section>
 
+  <!-- Methodology -->
+  <section class="content-section bg-primary" id="about">
+    <div class="container text-center">
+      <h2>How does this work?</h2>
+      <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQy9PxcakkLPt9Soc9iCNb-ikNgN9kWBjfA7WgB0u3TW16hL605XUwsW15seKhjXkK2xgv_YFWD1SXC/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+    </div>
+  </section>
+
   <!-- Hiking Image --> 
   <section class="callout">
   </section> 
-
-  <!-- Methodology -->
-  <section>
-    <h2>How does this work?</h2>
-  </section>
 
   <!-- Footer -->
   <footer class="footer text-center">
