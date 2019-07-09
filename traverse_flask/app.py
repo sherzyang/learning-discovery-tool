@@ -85,15 +85,16 @@ def vectorize_text(text):
     get_top_k_vector(corpus_vectors, feature_ranking),
     )
     
-    nearest_article_idxs = np.argsort(distances)
-    nearest_articles = new_corpus.loc[nearest_article_idxs[0], :]
-    top_10 = nearest_articles[:10]
-    top_df = top_10.sort_values(['score'])
-    article_num = str(nearest_articles[:1].index)
-    article_num_str = article_num.strip("Int64Index([], dtype='int64')")
-    article_num_final = int(article_num_str)
-     
-    return nearest_articles.loc[article_num_final, 'content']
+    nearest_article_idxs = np.argsort(distances)[0]
+    nearest_articles = new_corpus.loc[nearest_article_idxs[:50], :]
+    #nearest_articles = new_corpus.loc[nearest_article_idxs[0], :]
+    #top_10 = nearest_articles[:10]
+    #top_df = top_10.sort_values(['score'])
+    #article_num = str(nearest_articles[:1].index)
+    #article_num_str = article_num.strip("Int64Index([], dtype='int64')")
+    #article_num_final = int(article_num_str)
+    return nearest_articles.to_html()
+    #return nearest_articles.loc[article_num_final, 'content']
 
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
@@ -101,7 +102,7 @@ def predict():
     data = request.json
     data = str(data)
     result = vectorize_text(data)
-    return jsonify(result)
+    return result
 
 def top_50_text(text):
     vec = load_vectorizer()
