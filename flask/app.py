@@ -103,4 +103,43 @@ def predict():
     result = vectorize_text(data)
     return jsonify(result)
 
+def top_50_text(text):
+    vec = load_vectorizer()
+    corpus_vectors = load_corpus_vectors().toarray()
+    sample_vector = vec.transform([text]).toarray()
+    feature_ranking = np.argsort(sample_vector[0])[::-1]
+    vocab_arr = get_vocab_arr(vec)
+    
+    distances = cdist(
+    get_top_k_vector(sample_vector, feature_ranking),
+    get_top_k_vector(corpus_vectors, feature_ranking),
+    )
+    
+    nearest_article_idxs = np.argsort(distances)
+    nearest_articles = new_corpus.loc[nearest_article_idxs[0], :]
+    top_50 = nearest_articles[:50]
+    
+    return top_50.sort_values(['score'])
 
+def get_level_change(x,text):
+    """
+    Takes in a value and returns the article with the score closest to that value.
+    """
+    top_50_df = top_50_text(text)
+    top_50_df = top_50_df.reset_index()
+    top_50_dict = top_50_df['score'].to_dict()
+    abs_values = {}
+    for key, value in top_50_dict.items():
+        temp = abs(value-x)
+        abs_values.update({key:temp})
+    article_id = min(abs_values, key=abs_values.get)
+    level_change = top_50_df['content'][article_id]
+    return level_change
+
+@app.route('/level_up', methods=['GET', 'POST'])
+def level_up():
+    """Return a new article."""
+    data = request.json
+    data = str(data)
+    result = get_level_change(x,data)
+    return jsonify(result)
