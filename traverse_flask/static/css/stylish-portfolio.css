@@ -44,6 +44,16 @@ h6 {
   font-weight: 700;
 }
 
+#articles {
+  table-layout: fixed;
+}
+
+#articles td {
+  height: 30px;
+  overflow: hidden;
+  width: 100%;
+}
+
 .slidecontainer {
   width: 100%; /* Width of the outside container */
 }
