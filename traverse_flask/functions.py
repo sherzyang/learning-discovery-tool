@@ -49,7 +49,7 @@ def get_top_k_vector(vector, feature_ranking, k=20):
     """Return the top k vector according to feature_ranking."""
     return vector[:, feature_ranking[:k]]
 
-def top_50_text(text):
+def top_k_text(text, k=50):
     vec = load_vectorizer()
     corpus_vectors = load_corpus_vectors().toarray()
     sample_vector = vec.transform([text]).toarray()
@@ -57,15 +57,25 @@ def top_50_text(text):
     vocab_arr = get_vocab_arr(vec)
     
     distances = cdist(
-    get_top_k_vector(sample_vector, feature_ranking),
-    get_top_k_vector(corpus_vectors, feature_ranking),
+        get_top_k_vector(sample_vector, feature_ranking),
+        get_top_k_vector(corpus_vectors, feature_ranking),
     )
     
     nearest_article_idxs = np.argsort(distances)
     nearest_articles = new_corpus.loc[nearest_article_idxs[0], :]
-    top_50 = nearest_articles[:50]
     
-    return top_50.sort_values(['score']).to_html()
+    top_k = nearest_articles[:k].copy()
+    top_k['summary'] = top_k['content'].apply(lambda text: ' '.join(text.split()[:20]))
+    top_k['title'] = top_k['content'].apply(lambda text: ' '.join(text.split()[:4]).capitalize())
+    top_k['url'] = top_k['title'].apply(lambda title: f'https://en.wikipedia.org/wiki/{title.replace(" ", "_")}')
+    top_k['_id'] = range(k)  # will be replaced with ObjectID from MongoDB
+    top_k['i'] = range(k)  # won't change
+    top_k = top_k.sort_values(['score'])
+    top_k['style'] = "display: none"
+    top_k.loc[(top_k['i'] >= 22) & (top_k['i'] < 27), 'style'] = ""
+    return top_k
+
+
 def get_level_change(x,text):
     """
     Takes in a value and returns the article with the score closest to that value.

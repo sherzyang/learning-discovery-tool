@@ -52,30 +52,20 @@
     
     document["move_down"].bind("click", get_prediction)
     
-    def update_traverse_slider_label(ev):
+    def update_traverse_slider(ev):
         traverse_slide_val = document["text_slider"].value
-        document["text_slider"].textContent = traverse_slide_val
+        document["text_slider_label"].html = traverse_slide_val
+        min_idx = int(traverse_slide_val)
+        for i in range(50):
+          article = document[f'article_{i}']
+          if (i >= min_idx) and (i < (min_idx + 5)):
+            style = ""
+          else:
+            style="display: none"
+          article.attrs['style'] = style
     
-    def get_traverse(ev):
-        """Get the new level article."""
-        req = ajax.ajax()
-        req.bind('complete', get_random_cities)
-        req.open('POST', '/traverse', False)
-        req.set_header('content-type','application/json')
-        user_inputs = {
-            'user_input_traverse': document['text_slider'].value,
-          }
-        data = json.dumps(user_inputs)
-        req.send(data)
     
-    def get_random_cities(response):
-        if response.status==200 or response.status==0:
-            cities = json.loads(response.text)
-            change_place_names(cities)
-        else:
-            warnings.warn(response.text)
-    
-    document["text_slider"].bind("change", update_traverse_slider_label)
+    document["text_slider"].bind("input", update_traverse_slider)
   </script>
 
 <!-- Navigation -->
@@ -141,20 +131,17 @@
         <h1>Slide the scale and then select Traverse!</h1>
         <div class="slidecontainer">
                 <span class="Simpler">Base Camp: Simpler Content</span>
-                <input type="range" min="1" max="100" value="50" class="slider" id="text_slider">
+                <input type="range" min="0" max="45" value="22" class="slider" id="text_slider">
                 <span class="Complex">Summit: More Complex Content</span>  
                 <span id='text_slider_label'>50</span> 
         </div> 
             <br />
-        <div>
-          <a class="btn btn-dark btn-xl js-scroll-trigger" href="#new_read">Traverse!</a>
-        </div>
       </div>
     </div>
   </section>
 
   <!-- Result of Traverse Again -->
-  <section class="content-section bg-primary" id="new_read">
+  <!-- <section class="content-section bg-primary" id="new_read">
       <div class="container text-center">
           <h3>This is an article that is a different level read.</h3>
         <div class="row">
@@ -165,7 +152,7 @@
               <br />
         </div>
       </div>
-  </section>
+  </section> -->
 
   <!-- Methodology -->
   <section class="content-section bg-primary" id="about">
