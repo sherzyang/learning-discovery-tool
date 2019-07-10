@@ -1,14 +1,14 @@
 <table id="articles" style="border: 1px black solid">
-    <tr style="height: 5em;">
-        <th style="width: 4em;">Title</th>
+    <tr style="height:3em;">
+        <th style="width: 6em;">Title</th>
         <th style="width: 2em;">Level</th>
-        <th style="width: 8em;">Summary</th>
+        <th style="width: 6em;">Summary</th>
     </tr>
     {% for article in articles %}
-    <tr id="article_{{article['i']}}" style="{{article['style']}}">
+    <tr style="height:2em" id="article_{{article['i']}}" style="{{article['style']}}">
         <td><a href="{{article['url']}}">{{article['title']}}</a></td>
         <td>{{article['score']}}</td>
-        <td>{{article['summary']}}</td>
+        <td>{{article['summary'][:30]}}</td>
     </tr>
     {% endfor %}
 </table>
