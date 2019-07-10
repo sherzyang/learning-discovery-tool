@@ -49,9 +49,12 @@ h6 {
 }
 
 #articles td {
-  height: 30px;
+  width: 25%;
+}
+
+#articles td div {
+  height: 20px;
   overflow: hidden;
-  width: 100%;
 }
 
 .slidecontainer {

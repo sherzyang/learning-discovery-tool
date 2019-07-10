@@ -19,6 +19,7 @@
 
   <!-- Custom CSS -->
   <link href="css/stylish-portfolio.css" rel="stylesheet">
+  <link href="css/range_slider.css" rel="stylesheet">
 
   <!-- Enable Brython -->
   <title>Traverse</title>
@@ -91,8 +92,8 @@
 <!-- Header -->
 <header class="masthead d-flex" id="page-top">
   <div class="container text-center my-auto">
-    <h1 class="mb-1">Text Ascent</h1>
-    <h3 class="mb-5">
+    <h1 style="opacity: 0.3;" class="mb-1">Text Ascent</h1>
+    <h3 style="opacity: 0.3;" class="mb-5">
       <em>A tool to upskill with friends</em>
     </h3>
 
@@ -100,38 +101,25 @@
 <section>
 <div class="overlay"></div>
     <div>
-      <textarea id="user_input" cols="70" rows="5">How to start: delete this text and paste in two sentences or more of anything you're reading. You'll get the most similar article in our library back. Then you can change the reading difficulty and learn more about the topic!</textarea>
+      <textarea id="user_input" cols="70" rows="5" onfocus="this.value=''" placeholder='How to start: delete this text and paste in two sentences or more of anything you\'re reading. You\'ll get the most similar article in our library back. Then you can change the reading difficulty and learn more about the topic!'"></textarea>
     </div>
     <br />
     <div>
       <a id="move_down" class="btn btn-primary btn-xl js-scroll-trigger" href="#traverse">Traverse!</a>
-   </div>
+   </div style="opacity: 0.8;">
    <br /><br /><br /><br /><br /><br />
     <h6>Photo by Ted Bryan Yu on Unsplash</h6>
 </section>
 </div>
 </header>
-
-<!-- First Result -->
-<section class="content-section bg-light" id="traverse">
-  <div class="container text-center">
-    <div class="row">
-      <h3>These are some articles related to your topic. Want to read something simpler or more challenging? Traverse below!</h3>
-          <!-- <div class="container text-center">
-              <a id="move_down" class="btn btn-dark btn-xl js-scroll-trigger" href="#read_on">Traverse</a>
-          </div> -->
-          <div id="result"></div>
-            <br />
-    </div>
-  </div>
-  </section>
-  
-  <!-- Traverse Again -->
-  <section class="content-section bg-primary text-center" id="read_on">
+ 
+<div class=row>
+  <!-- Section One -->
+  <section class="content-section bg-primary text-center col-md-4" id="read_on">
     <div class="container">
       <div class="content-section-heading">
         <h1>Slide the scale to traverse</h1>
-        <div class="slidecontainer">
+        <div class="rangeslider--vertical">
                 <b>Camp: Simpler  </b><input type="range" min="0" max="45" value="22" class="slider" id="text_slider"><b>  Summit: Complex </b> 
                 <br \>
         <div class="container text-center">
@@ -143,22 +131,21 @@
     </div>
   </section>
 
-  <!-- Result of Traverse Again -->
-  <!-- <section class="content-section bg-primary" id="new_read">
-      <div class="container text-center">
-          <h3>This is an article that is a different level read.</h3>
-        <div class="row">
-              <div class="container text-center">
-                  <div id="result"></div>
-                <a id="move_up" class="btn btn-dark btn-xl js-scroll-trigger" href="#read_on">Find Another</a>
-              </div>
-              <br />
-        </div>
-      </div>
-  </section> -->
+
+<!-- Section Two -->
+<section class="content-section bg-primary col-md-8" id="traverse">
+  <div class="container text-center">
+    <div class="row">
+      <h3>These are some articles related to your topic. Want to read something simpler or more challenging? Traverse below!</h3>
+          <div id="result"></div>
+            <br />
+    </div>
+  </div>
+  </section>
+</div>
 
   <!-- Methodology -->
-  <section class="content-section bg-primary" id="about">
+  <section class="content-section bg-light" id="about">
     <div class="container text-center">
       <h2>How does this work?</h2>
       <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQy9PxcakkLPt9Soc9iCNb-ikNgN9kWBjfA7WgB0u3TW16hL605XUwsW15seKhjXkK2xgv_YFWD1SXC/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
