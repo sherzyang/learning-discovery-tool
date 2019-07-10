@@ -48,13 +48,10 @@ h6 {
   width: 100%; /* Width of the outside container */
 }
 
-.slidecontainer.simpler { float:right }
-.slidecontainer.complex { float:left }
-
 /* The slider itself */
 .slider {
   -webkit-appearance: none;
-  width: 100%;
+  width: 60%;
   height: 15px;
   border-radius: 5px;   
   background: #d3d3d3;

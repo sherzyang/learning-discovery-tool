@@ -57,16 +57,16 @@ def top_k_text(text, k=50):
     nearest_article_idxs = np.argsort(distances)
     nearest_articles = clean_df.loc[nearest_article_idxs[0], :]
     
-    top_k = nearest_articles[:k].copy()
-    top_k['summary'] = clean_df['summary']
-    top_k['title'] = clean_df['title']
-    top_k['url'] = clean_df['url']
-    top_k['_id'] = clean_df['_id']
+#     top_k = nearest_articles[:k].copy()
+#     top_k['summary'] = clean_df['summary']
+#     top_k['title'] = clean_df['title']
+#     top_k['url'] = clean_df['url']
+#     top_k['_id'] = clean_df['_id']
                                         
-#     top_k['summary'] = top_k['content'].apply(lambda text: ' '.join(text.split()[:20]))
-#     top_k['title'] = top_k['content'].apply(lambda text: ' '.join(text.split()[:4]).capitalize())
-#     top_k['url'] = top_k['title'].apply(lambda title: f'https://en.wikipedia.org/wiki/{title.replace(" ", "_")}')
-#     top_k['_id'] = range(k)  # will be replaced with ObjectID from MongoDB
+    top_k['summary'] = top_k['content'].apply(lambda text: ' '.join(text.split()[:20]))
+    top_k['title'] = top_k['content'].apply(lambda text: ' '.join(text.split()[:4]).capitalize())
+    top_k['url'] = top_k['title'].apply(lambda title: f'https://en.wikipedia.org/wiki/{title.replace(" ", "_")}')
+    top_k['_id'] = range(k)  # will be replaced with ObjectID from MongoDB
     top_k['i'] = range(k)  # won't change
     top_k = top_k.sort_values(['score'])
     top_k['style'] = "display: none"

@@ -114,10 +114,10 @@
 <section class="content-section bg-light" id="traverse">
   <div class="container text-center">
     <div class="row">
-      <h3>This is an article that's related to your topic. Want to read something simpler or more challenging? Select Read On!</h3>
-          <div class="container text-center">
-              <a id="move_down" class="btn btn-dark btn-xl js-scroll-trigger" href="#read_on">Read On</a>
-          </div>
+      <h3>These are some articles related to your topic. Want to read something simpler or more challenging? Traverse below!</h3>
+          <!-- <div class="container text-center">
+              <a id="move_down" class="btn btn-dark btn-xl js-scroll-trigger" href="#read_on">Traverse</a>
+          </div> -->
           <div id="result"></div>
             <br />
     </div>
@@ -128,12 +128,13 @@
   <section class="content-section bg-primary text-center" id="read_on">
     <div class="container">
       <div class="content-section-heading">
-        <h1>Slide the scale and then select Traverse!</h1>
+        <h1>Slide the scale to traverse</h1>
         <div class="slidecontainer">
-                <span class="Simpler">Base Camp: Simpler Content</span>
-                <input type="range" min="0" max="45" value="22" class="slider" id="text_slider">
-                <span class="Complex">Summit: More Complex Content</span>  
-                <span id='text_slider_label'>50</span> 
+                <b>Camp: Simpler  </b><input type="range" min="0" max="45" value="22" class="slider" id="text_slider"><b>  Summit: Complex </b> 
+                <br \>
+        <div class="container text-center">
+            <span id='text_slider_label' style="font-size: 20px">50</span> 
+        </div>
         </div> 
             <br />
       </div>
