@@ -20,6 +20,7 @@ def download_and_open(url, mode='rb', folder='data'):
 
 with download_and_open(r"https://text-ascent.s3-us-west-2.amazonaws.com/clean_df.pkl", "rb") as input_file:
     clean_df = pickle.load(input_file)
+    clean_df['url'] = clean_df['title'].apply(lambda title: f'https://en.wikipedia.org/wiki/{title.replace(" ", "_")}')
 
 def load_vectorizer(pickle_file='https://text-ascent.s3-us-west-2.amazonaws.com/vectorizer.pkl'):
     """Loads the trained TF/IDF vectorizer."""
