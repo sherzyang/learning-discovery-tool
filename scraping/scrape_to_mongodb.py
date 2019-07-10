@@ -58,7 +58,7 @@ def collect_articles(article_titles, return_dict=False, min_length=300):
 
 def main():
     """Scrape all unique articles to MongoDB"""
-    with open('data/unique_articles.pkl', 'rb') as f:
+    with open('../data/unique_articles.pkl', 'rb') as f:
         article_titles = pickle.load(f)
     collect_articles(article_titles)
 
