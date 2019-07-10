@@ -44,7 +44,7 @@ def get_top_k_vector(vector, feature_ranking, k=20):
 
 def top_k_text(text, k=50):
     vec = load_vectorizer()
-    corpus_vectors = load_corpus_vectors().toarray()
+    corpus_vectors = load_corpus_vectors()  # .toarray()
     sample_vector = vec.transform([text]).toarray()
     feature_ranking = np.argsort(sample_vector[0])[::-1]
     vocab_arr = get_vocab_arr(vec)
@@ -58,7 +58,7 @@ def top_k_text(text, k=50):
     nearest_articles = clean_df.loc[nearest_article_idxs[0], :]
     
     top_k = nearest_articles[:k].copy()
-                                        
+
     # top_k['summary'] = top_k['content'].apply(lambda text: ' '.join(text.split()[:20]))
     # top_k['title'] = top_k['content'].apply(lambda text: ' '.join(text.split()[:4]).capitalize())
     # top_k['url'] = top_k['title'].apply(lambda title: f'https://en.wikipedia.org/wiki/{title.replace(" ", "_")}')
