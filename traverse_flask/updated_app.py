@@ -1,32 +1,19 @@
 import pickle
-import pandas as pd
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.pipeline import Pipeline
-
+import os
+import requests
 from flask import Flask, request, render_template, jsonify
 
-import os
 import numpy as np
+import pandas as pd
 import textstat
 from sklearn.feature_extraction.text import TfidfVectorizer
 from scipy.spatial.distance import cosine, cdist
-import requests
 
-import textstat
-import operator
 import gensim
-from gensim.utils import simple_preprocess
-from gensim.parsing.preprocessing import STOPWORDS
-from nltk.stem import WordNetLemmatizer, SnowballStemmer
-from nltk.stem.porter import *
-import numpy as np
+import operator
 from operator import itemgetter
 
 app = Flask(__name__, static_url_path="")
-    
-# with open(r"data/new_corpus.pkl", "rb") as input_file:
-#     new_corpus = pickle.load(input_file)
 
 def download_and_open(url, mode='rb', folder='data'):
     """Downloads the specified file if it isn't already downloaded, then opens it."""
@@ -40,9 +27,6 @@ def download_and_open(url, mode='rb', folder='data'):
 
 with download_and_open(r"https://text-ascent.s3-us-west-2.amazonaws.com/new_corpus.pkl", "rb") as input_file:
     new_corpus = pickle.load(input_file)
-    
-# with open (r"data/dictionary.pkl", "rb") as input_file: 
-#     dictionary = pickle.load(input_file)
 
 with download_and_open(r"https://text-ascent.s3-us-west-2.amazonaws.com/dictionary.pkl", "rb") as input_file: 
      dictionary = pickle.load(input_file)
@@ -135,7 +119,7 @@ def get_level_change(x,text):
         abs_values.update({key:temp})
     article_id = min(abs_values, key=abs_values.get)
     level_change = top_50_df['content'][article_id]
-    return level_change
+    return level_changec
 
 @app.route('/traverse', methods=['GET', 'POST'])
 def level_up():
