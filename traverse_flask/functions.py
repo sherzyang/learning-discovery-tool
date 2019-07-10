@@ -74,19 +74,3 @@ def top_k_text(text, k=50):
     top_k['style'] = "display: none"
     top_k.loc[(top_k['i'] >= 22) & (top_k['i'] < 27), 'style'] = ""
     return top_k
-
-
-def get_level_change(x,text):
-    """
-    Takes in a value and returns the article with the score closest to that value.
-    """
-    top_50_df = top_50_text(text)
-    top_50_df = top_50_df.reset_index()
-    top_50_dict = top_50_df['score'].to_dict()
-    abs_values = {}
-    for key, value in top_50_dict.items():
-        temp = abs(value-x)
-        abs_values.update({key:temp})
-    article_id = min(abs_values, key=abs_values.get)
-    level_change = top_50_df['content'][article_id]
-    return level_changec
