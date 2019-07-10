@@ -8,10 +8,6 @@ import textstat
 from sklearn.feature_extraction.text import TfidfVectorizer
 from scipy.spatial.distance import cosine, cdist
 
-import gensim
-import operator
-from operator import itemgetter
-
 def download_and_open(url, mode='rb', folder='data'):
     """Downloads the specified file if it isn't already downloaded, then opens it."""
     filename = os.path.basename(url)
@@ -22,11 +18,8 @@ def download_and_open(url, mode='rb', folder='data'):
             f.write(response.content)
     return open(pathname, mode)
 
-with download_and_open(r"https://text-ascent.s3-us-west-2.amazonaws.com/new_corpus.pkl", "rb") as input_file:
-    new_corpus = pickle.load(input_file)
-
-with download_and_open(r"https://text-ascent.s3-us-west-2.amazonaws.com/dictionary.pkl", "rb") as input_file: 
-     dictionary = pickle.load(input_file)
+with download_and_open(r"https://text-ascent.s3-us-west-2.amazonaws.com/clean_df.pkl", "rb") as input_file:
+    clean_df = pickle.load(input_file)
 
 def load_vectorizer(pickle_file='https://text-ascent.s3-us-west-2.amazonaws.com/vectorizer.pkl'):
     """Loads the trained TF/IDF vectorizer."""
@@ -62,13 +55,18 @@ def top_k_text(text, k=50):
     )
     
     nearest_article_idxs = np.argsort(distances)
-    nearest_articles = new_corpus.loc[nearest_article_idxs[0], :]
+    nearest_articles = clean_df.loc[nearest_article_idxs[0], :]
     
     top_k = nearest_articles[:k].copy()
-    top_k['summary'] = top_k['content'].apply(lambda text: ' '.join(text.split()[:20]))
-    top_k['title'] = top_k['content'].apply(lambda text: ' '.join(text.split()[:4]).capitalize())
-    top_k['url'] = top_k['title'].apply(lambda title: f'https://en.wikipedia.org/wiki/{title.replace(" ", "_")}')
-    top_k['_id'] = range(k)  # will be replaced with ObjectID from MongoDB
+    top_k['summary'] = clean_df['summary']
+    top_k['title'] = clean_df['title']
+    top_k['url'] = clean_df['url']
+    top_k['_id'] = clean_df['_id']
+                                        
+#     top_k['summary'] = top_k['content'].apply(lambda text: ' '.join(text.split()[:20]))
+#     top_k['title'] = top_k['content'].apply(lambda text: ' '.join(text.split()[:4]).capitalize())
+#     top_k['url'] = top_k['title'].apply(lambda title: f'https://en.wikipedia.org/wiki/{title.replace(" ", "_")}')
+#     top_k['_id'] = range(k)  # will be replaced with ObjectID from MongoDB
     top_k['i'] = range(k)  # won't change
     top_k = top_k.sort_values(['score'])
     top_k['style'] = "display: none"
