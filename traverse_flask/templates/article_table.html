@@ -6,9 +6,9 @@
     </tr>
     {% for article in articles %}
     <tr style="height:2em" id="article_{{article['i']}}" style="{{article['style']}}">
-        <td><a href="{{article['url']}}">{{article['title']}}</a></td>
-        <td>{{article['score']}}</td>
-        <td>{{article['summary'][:30]}}</td>
+        <td style="width: 6em;"><a href="{{article['url']}}">{{article['title']}}</a></td>
+        <td style="width: 2em;">{{article['score']}}</td>
+        <td style="width: 6em;">{{article['summary'][:50]}}</td>
     </tr>
     {% endfor %}
 </table>

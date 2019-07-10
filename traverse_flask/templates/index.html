@@ -37,6 +37,7 @@
     def show_results(response):
         if response.status==200:
             document["result"].html = response.text
+            update_traverse_slider()
         else:
             document["result"].html = "Error: " + response.text
 
@@ -66,6 +67,7 @@
     
     
     document["text_slider"].bind("input", update_traverse_slider)
+   
   </script>
 
 <!-- Navigation -->
