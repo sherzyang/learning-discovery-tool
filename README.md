@@ -35,9 +35,11 @@ The current model uses cosine distance between the top 20 features of importance
 *My example on AWS S3: [vectorizer](https://text-ascent.s3-us-west-2.amazonaws.com/vectorizer.pkl)*
 * Use a vectorizer transform function (transforms documents to document-term matrix) to create your corpus vectors
 *My example on AWS S3: [corpus vectors](https://text-ascent.s3-us-west-2.amazonaws.com/corpus_vectors.pkl)*
+* Clone this repository 
+* In the ```traverse_flask``` directory, create an empty subdirectory named ```data``` .  
 * Implement the flask app by running flask in ```traverse_flask``` in the terminal with ```$ export FLASK_APP=app $ flask run ``` . This flask ```app.py``` takes in functions from ```functions.py```. Adjust the functions to change the data pipeline on the backend. Adjust the brython in the ```static/templates/index.html``` to change the way data is reflected to the user. 
 
-[Modeling Notebook](modeling_notebook.ipynb)
+[Model Functions](traverse_flask/functions.py)
 
 ### Evaluation
 This product is successful if users are able to discover content related to what they were already reading that is of a different reading difficulty. User satisfaction, repeat usage, web app traffic, and sharing of the app are the metrics I am using to evaluate Text Ascent's success. I evaluated 4 models before going with the model deployed on the web app: 
