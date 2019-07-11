@@ -22,8 +22,8 @@ overflow: auto;
 }
 
 .content-section {
-  padding-top: 7.5rem;
-  padding-bottom: 7.5rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
 
 .content-section-heading h2 {
@@ -46,15 +46,23 @@ h6 {
 
 #articles {
   table-layout: fixed;
+  border: 1px black solid;
+  width:90%; 
+  margin-left:5%; 
+  margin-right:5%;
 }
 
 #articles td {
   width: 25%;
+  border-collapse: collapse;
+  border: 1px black solid;
 }
 
 #articles td div {
   height: 20px;
   overflow: hidden;
+  border-collapse: collapse;
+  border: 1px black solid;
 }
 
 .slidecontainer {
@@ -72,7 +80,9 @@ h6 {
   opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s;
-}
+  position: relative;
+  -webkit-transform: rotate(90deg);
+  top:100px;}
 
 /* Mouse-over effects */
 .slider:hover {
@@ -303,75 +313,6 @@ h6 {
   max-width: 30rem;
 }
 
-.portfolio-item {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  max-width: 530px;
-  margin: auto auto 1rem;
-}
-
-.portfolio-item .caption {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(33, 37, 41, 0.2);
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  z-index: 1;
-}
-
-.portfolio-item .caption .caption-content {
-  color: #fff;
-  margin: auto 2rem 2rem;
-}
-
-.portfolio-item .caption .caption-content h2 {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-}
-
-.portfolio-item .caption .caption-content p {
-  font-weight: 300;
-  font-size: 1.2rem;
-}
-
-@media (min-width: 992px) {
-  .portfolio-item {
-    max-width: none;
-    margin: 0;
-  }
-  .portfolio-item .caption {
-    -webkit-transition: -webkit-clip-path 0.25s ease-out, background-color 0.7s;
-    -webkit-clip-path: inset(0px);
-    clip-path: inset(0px);
-  }
-  .portfolio-item .caption .caption-content {
-    -webkit-transition: opacity 0.25s;
-    transition: opacity 0.25s;
-    margin-left: 5rem;
-    margin-right: 5rem;
-    margin-bottom: 5rem;
-  }
-  .portfolio-item img {
-    -webkit-transition: -webkit-clip-path 0.25s ease-out;
-    -webkit-clip-path: inset(-1px);
-    clip-path: inset(-1px);
-  }
-  .portfolio-item:hover img {
-    -webkit-clip-path: inset(2rem);
-    clip-path: inset(2rem);
-  }
-  .portfolio-item:hover .caption {
-    background-color: #FFE599;
-    -webkit-clip-path: inset(2rem);
-    clip-path: inset(2rem);
-  }
-}
-
 footer.footer {
   padding-top: 5rem;
   padding-bottom: 5rem;
@@ -399,9 +340,9 @@ a {
   color: rgb(99, 100, 100);
 }
 
-/* a:hover, a:focus, a:active {
+a:hover, a:focus, a:active {
   color: #aaabac;
-} */
+}
 
 .btn-primary {
   background-color: #FFE599 !important;

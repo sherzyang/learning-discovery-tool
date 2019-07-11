@@ -19,7 +19,7 @@
 
   <!-- Custom CSS -->
   <link href="css/stylish-portfolio.css" rel="stylesheet">
-  <link href="css/range_slider.css" rel="stylesheet">
+  <!-- <link href="css/range_slider.css" rel="stylesheet"> -->
 
   <!-- Enable Brython -->
   <title>Traverse</title>
@@ -92,8 +92,8 @@
 <!-- Header -->
 <header class="masthead d-flex" id="page-top">
   <div class="container text-center my-auto">
-    <h1 style="opacity: 0.3;" class="mb-1">Text Ascent</h1>
-    <h3 style="opacity: 0.3;" class="mb-5">
+    <h1 style="opacity: 0.9;" class="mb-1">Text Ascent</h1>
+    <h3 style="opacity: 0.75;" class="mb-5">
       <em>A tool to upskill with friends</em>
     </h3>
 
@@ -101,56 +101,71 @@
 <section>
 <div class="overlay"></div>
     <div>
-      <textarea id="user_input" cols="70" rows="5" onfocus="this.value=''" placeholder='How to start: delete this text and paste in two sentences or more of anything you\'re reading. You\'ll get the most similar article in our library back. Then you can change the reading difficulty and learn more about the topic!'"></textarea>
+      <textarea id="user_input" cols="70" rows="5" onfocus="this.value=''" placeholder='Start typing two sentences or more of anything you&#39;r reading. You&#39;ll get the 5 most similar articles in our library back. Then you can change the reading difficulty!'></textarea>
     </div>
     <br />
     <div>
       <a id="move_down" class="btn btn-primary btn-xl js-scroll-trigger" href="#traverse">Traverse!</a>
    </div style="opacity: 0.8;">
    <br /><br /><br /><br /><br /><br />
-    <h6>Photo by Ted Bryan Yu on Unsplash</h6>
+    <h6 style="opacity: 0.3;">Photo by Ted Bryan Yu on Unsplash</h6>
 </section>
 </div>
 </header>
  
-<div class=row>
+<div class="row">
   <!-- Section One -->
-  <section class="content-section bg-primary text-center col-md-4" id="read_on">
-    <div class="container">
-      <div class="content-section-heading">
-        <h1>Slide the scale to traverse</h1>
-        <div class="rangeslider--vertical">
-                <b>Camp: Simpler  </b><input type="range" min="0" max="45" value="22" class="slider" id="text_slider"><b>  Summit: Complex </b> 
-                <br \>
-        <div class="container text-center">
-            <span id='text_slider_label' style="font-size: 20px">50</span> 
+  <section class="content-section bg-primary col-md-2" id="read_on">
+      <div class="container text-center">
+          <div class="content-section-heading">
+            <h2 style="font-size: 24px;">Slide the scale to traverse</h2>
+            <div>
+            <b>Summit: Complex</b> 
+            <input type="range" min="0" max="45" value="22" class="slider" id="text_slider">
+            <br /><br /><br /><br /><br /><br /><br /><br />
+            <b>Camp: Simpler</b>
+            <div class="container text-center">
+                <span id='text_slider_label' style="font-size: 20px">Level</span> 
+            </div>
+            </div> 
+          </div>
         </div>
-        </div> 
-            <br />
-      </div>
-    </div>
   </section>
-
 
 <!-- Section Two -->
-<section class="content-section bg-primary col-md-8" id="traverse">
+<section class="content-section bg-primary col-md-10" id="traverse">
   <div class="container text-center">
-    <div class="row">
-      <h3>These are some articles related to your topic. Want to read something simpler or more challenging? Traverse below!</h3>
+      <h2 style="font-size: 24px">These are some articles related to your topic. Scroll to see more articles organized by content difficulty</h2>
           <div id="result"></div>
             <br />
-    </div>
   </div>
-  </section>
+</section>
 </div>
 
-  <!-- Methodology -->
-  <section class="content-section bg-light" id="about">
+  <!-- About -->
+  <div class="row" style="padding-top: 2rem; padding-left: 2rem; padding-right: 2rem; padding-bottom: 2rem;">
+  <section class="content-section bg-light col-md-8" id="about">
     <div class="container text-center">
       <h2>How does this work?</h2>
       <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQy9PxcakkLPt9Soc9iCNb-ikNgN9kWBjfA7WgB0u3TW16hL605XUwsW15seKhjXkK2xgv_YFWD1SXC/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
     </div>
   </section>
+  <section class="content-section bg-light col-md-4">
+      <br /><br /><br /><br /><br /><br /><br /><br />
+      <h4>About</h4>
+      <p>
+      <h6 style="font-weight: normal;">Sherry Yang is a data scientist with a background in market research. Her interest in web search led to building “Text Ascent”, a web app that uses unsupervised ML to help users discover content based on text complexity.</h6>
+      </p>
+      <br />
+      <p>
+        <h6 style="font-weight: normal;">Technologies used: Python, Wikipedia API, Natural Language Processing, Flask, AWS, MongoDB</h6>
+      </p>
+      <br />
+      <p>
+          <a href="mailto:sherry.yang33@gmail.com?subject=Feedback">Contact Me For Tea</a>
+      </p>
+    </section>
+  </div>
 
   <!-- Hiking Image --> 
   <section class="callout">
