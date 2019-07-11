@@ -33,7 +33,7 @@ These files are saved in an AWS S3 bucket to allow make the web app accessible.
 ![Modeling Notebook]()
 
 ### Evaluation
-I evaluated 4 models before going with the model deployed on the web app: 
+This product is successful if users are able to discover content related to what they were already reading that is of a different reading difficulty. User satisfaction, repeat usage, web app traffic, and sharing of the app are the metrics I am using to evaluate Text Ascent's success. I evaluated 4 models before going with the model deployed on the web app: 
 
 * Model 1: Used TextStat, Gensim, and Spacy. 
 * Model 2: Used Latent Dirichlet Allocation (LDA) topic modeling with 10 topics, then sorts user content into a topic. 
