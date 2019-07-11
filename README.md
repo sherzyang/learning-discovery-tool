@@ -14,6 +14,7 @@ Building on my interests in web search, I created Text Ascent, a web app that us
 ![traverse image](traverse_flask/static/img/ted-bryan-yu-5mezpWin6T8-unsplash.jpg)
 Photo Credit: Ted Bryan Yu, Unsplash
 
+## CRISP-DM
 ### Data Understanding
 I used [Wikipedia-API](https://pypi.org/project/Wikipedia-API/), a python wrapper for [Wikipedia](https://www.wikipedia.org/)'s API to gather article titles on topics ranging from art to science. Then I ran a data gathering function (scrape_to_mongodb.py) that took those titles and scraped 11k+ articles for summaries, full text, and urls into a MongoDB database. I excluded articles that had full text less than 300 words because there are entries in Wikipedia like 'music file' that did not serve my model's purpose.
 
