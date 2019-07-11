@@ -41,6 +41,7 @@ def fetch_article(article_title, wiki_wiki):
 
 
 def collect_articles(article_titles, return_dict=False, min_length=300):
+    """Collect articles longer than min_length words."""
     docs = []
     wiki_wiki = wikipediaapi.Wikipedia(
         language="en", extract_format=wikipediaapi.ExtractFormat.WIKI

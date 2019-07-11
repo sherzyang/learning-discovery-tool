@@ -46,6 +46,7 @@ def load_corpus_vectors(
 
 
 def get_vocab_arr(vec):
+    """Get the vocabulary array."""
     n_features = len(vec.vocabulary_)
     vocab_arr = np.empty(n_features, dtype=object)
     for word, idx in vec.vocabulary_.items():
@@ -59,6 +60,7 @@ def get_top_k_vector(vector, feature_ranking, k=20):
 
 
 def top_k_text(text, k=50):
+    """Return fifty of the most similar articles to the user input sorted by reading score. Display five articles at a time."""
     vec = load_vectorizer()
     corpus_vectors = load_corpus_vectors()
     sample_vector = vec.transform([text]).toarray()
