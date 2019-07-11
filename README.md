@@ -1,8 +1,9 @@
 # Text Ascent
 A tool to upskill with friends
 
-Check out the web app [Text Ascent](traverse.sherzyang.com)
-[Presentation of Text Ascent, PDF](text_ascent_presentation.pdf)
+* Check out the web app [Text Ascent](http://traverse.sherzyang.com)
+
+* View the [Presentation of Text Ascent, PDF](text_ascent_presentation.pdf)
 
 ### Business Background
 <p> I've often found myself reading an article, say on data science, and wondering, where can I read something simpler on this topic? I realized I wasn't the only one when a friend posted a similar question on LinkedIn. She asked how to find articles in a specific range between most simple and most complex. I realized we don't have an easy system for that type of search besides manually reading for a good fit.
