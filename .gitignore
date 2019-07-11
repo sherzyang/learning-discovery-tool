@@ -1,4 +1,5 @@
 # Files
+traverse_flask/.DS_Store
 traverse_flask/data/clean_df.pkl
 traverse_flask/data/corpus_vectors.pkl
 traverse_flask/data/vectorizer.pkl
