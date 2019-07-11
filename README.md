@@ -1,7 +1,7 @@
 # Text Ascent
 A tool to upskill with friends
 
-[alt text](traverse_flask/static/img/ted-bryan-yu-5mezpWin6T8-unsplash.jpg)
+[traverse image](traverse_flask/static/img/ted-bryan-yu-5mezpWin6T8-unsplash.jpg)
 
 [Summary of Text Ascent, PDF]
 
