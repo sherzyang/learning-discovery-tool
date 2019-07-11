@@ -1,6 +1,8 @@
 # Files
 data/*
-traverse_flask/data/*
+traverse_flask/data/clean_df.pkl
+traverse_flask/data/corpus_vectors.pkl
+traverse_flask/data/vectorizer.pkl
 .DS_Store
 
 # Byte-compiled / optimized / DLL files
