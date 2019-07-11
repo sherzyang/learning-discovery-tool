@@ -1,6 +1,7 @@
 # Text Ascent
 A tool to upskill with friends
 
+Check out the web app [Text Ascent](traverse.sherzyang.com)
 [Presentation of Text Ascent, PDF](text_ascent_presentation.pdf)
 
 ### Business Background
