@@ -59,8 +59,8 @@ def top_k_text(text, k=50):
     nearest_articles = clean_df.loc[nearest_article_idxs[0], :]
     
     top_k = nearest_articles[:k].copy()
-    top_k = top_k.sort_values(['score'])
-    top_k['i'] = range(k)  # won't change
+    top_k = top_k.sort_values(['score'], ascending=False)
+    top_k['i'] = list(range(k))[::-1]  # won't change
     top_k['style'] = "display: none"
     top_k.loc[(top_k['i'] >= 22) & (top_k['i'] < 27), 'style'] = ""
     return top_k
