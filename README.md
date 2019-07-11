@@ -1,7 +1,9 @@
 # Text Ascent
 A tool to upskill with friends
 
-[Summary of Text Ascent, PDF]()
+[alt text](traverse_flask/static/img/ted-bryan-yu-5mezpWin6T8-unsplash.jpg)
+
+[Summary of Text Ascent, PDF]
 
 ### Background
 I've often found myself reading an article, say on data science, and wondering, where can I read something simpler on this topic? I realized I wasn't the only one when a friend posted a similar question on LinkedIn. She asked how to find articles in a specific range between most simple and most complex. I realized we don't have an easy system for that type of search besides manually reading for a good fit. Building on my interests in web search, I created Text Ascent, a web app that uses unsupervised ML to help users discover content based on text complexity. TA address how to search for content along all the stages of our learning journeys. Central to the goals I have for Text App is for it to make niche topics of interest between people more accessible. 
@@ -25,10 +27,10 @@ These files are saved in an AWS S3 bucket to allow make the web app accessible.
 ### Evaluation
 I evaluated 4 models before going with the model deployed on the web app: 
 
-Model 1: Used TextStat, Gensim, and Spacy. 
-Model 2: Used Latent Dirichlet Allocation (LDA) topic modeling with 10 topics, then sorts user content into a topic. 
-Model 3: Used TextStat and TF-IDF Vectorizer with 2000 dimensions. 
-Model 4: Used TextStat and TF-IDF Vectorizer with top 20 features.
+* Model 1: Used TextStat, Gensim, and Spacy. 
+* Model 2: Used Latent Dirichlet Allocation (LDA) topic modeling with 10 topics, then sorts user content into a topic. 
+* Model 3: Used TextStat and TF-IDF Vectorizer with 2000 dimensions. 
+* Model 4: Used TextStat and TF-IDF Vectorizer with top 20 features.
 
 Each iteration was done to so the resulting content was more similar to the user input content.
 
