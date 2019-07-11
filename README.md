@@ -19,13 +19,14 @@ I used [Wikipedia-API](https://pypi.org/project/Wikipedia-API/), a python wrappe
 [Data Collection Notebook](collect_data.ipynb) & [Data Exploration Notebook](data_exploration.ipynb)
 
 ### Data Preparation
-I graded the full text of each document using the [textstat package](https://pypi.org/project/textstat/)'s Flesch-Kincaid Grade. 
+The content returned from the Wikipedia-API wrapper did not require further cleaning. I did need to make sure that when the content was displayed on the web app that the html was read as JSON to avoid carriage returns displaying to the user. I graded the full text of each document using the [textstat package](https://pypi.org/project/textstat/)'s Flesch-Kincaid Grade. 
 
 These files are saved in an AWS S3 bucket to allow make the web app accessible.   
 
 [Data Preparation Notebook](data_preparation.ipynb)
 
 ### Modeling
+The current model uses cosine distance between the top 20 features of importance in corpus vectors and user input vectors to return similar content from the library to user input. The model features were created with TF-IDF vectorizer. TF-IDF vectorizer  splits the words in the corpus documents, removes stop words, and computs a term frequency for each word in each document, adjusted for how frequently the word appears in the corpus. In other words, uncommon words are given more weight than commonly used words.  
 
 #### Reproduce this model: 
 * Get a list of documents of interest and format into a dataframe like ```clean_df```. Get text difficulty scores using TextStat.
@@ -36,7 +37,7 @@ These files are saved in an AWS S3 bucket to allow make the web app accessible.
 *My example on AWS S3: [corpus vectors](https://text-ascent.s3-us-west-2.amazonaws.com/corpus_vectors.pkl)*
 * Implement the flask app by running flask in ```traverse_flask``` in the terminal with ```$ export FLASK_APP=app $ flask run ``` . This flask ```app.py``` takes in functions from ```functions.py```. Adjust the functions to change the data pipeline on the backend. Adjust the brython in the ```static/templates/index.html``` to change the way data is reflected to the user. 
 
-[Modeling Notebook]()
+[Modeling Notebook](modeling_notebook.ipynb)
 
 ### Evaluation
 This product is successful if users are able to discover content related to what they were already reading that is of a different reading difficulty. User satisfaction, repeat usage, web app traffic, and sharing of the app are the metrics I am using to evaluate Text Ascent's success. I evaluated 4 models before going with the model deployed on the web app: 
@@ -50,7 +51,7 @@ Each iteration was done to so the resulting content was more similar to the user
 
 Future Modeling: I would also like to compare a pre-trained neural network to my current TFIDF Vectorization to see if the quality of returned content improves. Improvement would be measured through user feedback in a simple manual grading system to be added to the web app.
 
-[Evaluation Notebook]()
+[Evaluation Notebook](evaluation_notebook.ipynb)
 
 ### Deployment 
 Text Ascent has been deployed as a flask-enabled web app [traverse.sherzyang.com](https://traverse.sherzyang.com) on an EC2 instance. The app uses brython to interact between python functions and html. 
