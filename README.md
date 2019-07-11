@@ -6,19 +6,19 @@ A tool to upskill with friends
 ### Background
 I've often found myself reading an article, say on data science, and wondering, where can I read something simpler on this topic? I realized I wasn't the only one when a friend posted a similar question on LinkedIn. She asked how to find articles in a specific range between most simple and most complex. I realized we don't have an easy system for that type of search besides manually reading for a good fit. Building on my interests in web search, I created Text Ascent, a web app that uses unsupervised ML to help users discover content based on text complexity. TA address how to search for content along all the stages of our learning journeys. Central to the goals I have for Text App is for it to make niche topics of interest between people more accessible. 
 
-![traverse image](traverse_flask/static/img/ted-bryan-yu-5mezpWin6T8-unsplash.jpg)
+[traverse image](traverse_flask/static/img/ted-bryan-yu-5mezpWin6T8-unsplash.jpg)
 
 ### Data Understanding
 I used Wikipedia-API, a python wrapper for Wikipedia's API to gather article titles on topics ranging from art to science. Then I ran a data gathering function (scrape_to_mongodb.py) that took those titles and scraped 11k+ articles for summaries, full text, and urls into a MongoDB database. I excluded articles that had full text less than 300 words because there are entries in Wikipedia like 'music file' that did not serve my model's purpose.
 
-![Data Collection Notebook](collect_data.ipynb) & [Data Exploration Notebook](data_exploration.ipynb)
+[Data Collection Notebook](collect_data.ipynb) & [Data Exploration Notebook](data_exploration.ipynb)
 
 ### Data Preparation
 I graded the full text of each document using the module textstat's Flesch-Kincaid Grade. 
 
 These files are saved in an AWS S3 bucket to allow make the web app accessible.   
 
-![Data Preparation Notebook](data_preparation.ipynb)
+[Data Preparation Notebook](data_preparation.ipynb)
 
 ### Modeling
 
@@ -30,7 +30,7 @@ These files are saved in an AWS S3 bucket to allow make the web app accessible.
 * Use a vectorizer transform function (transforms documents to document-term matrix) to create your corpus vectors
 *Example: [corpus vectors](https://text-ascent.s3-us-west-2.amazonaws.com/corpus_vectors.pkl)*
 
-![Modeling Notebook]()
+[Modeling Notebook]()
 
 ### Evaluation
 This product is successful if users are able to discover content related to what they were already reading that is of a different reading difficulty. User satisfaction, repeat usage, web app traffic, and sharing of the app are the metrics I am using to evaluate Text Ascent's success. I evaluated 4 models before going with the model deployed on the web app: 
@@ -44,7 +44,7 @@ Each iteration was done to so the resulting content was more similar to the user
 
 Future Modeling: I would also like to compare a pre-trained neural network to my current TFIDF Vectorization to see if the quality of returned content improves. Improvement would be measured through user feedback in a simple manual grading system to be added to the web app.
 
-![Evaluation Notebook]()
+[Evaluation Notebook]()
 
 ### Deployment 
 Text Ascent has been deployed as a flask-enabled web app [traverse.sherzyang.com](https://traverse.sherzyang.com) on an EC2 instance. The app uses brython to interact between python functions and html. 
