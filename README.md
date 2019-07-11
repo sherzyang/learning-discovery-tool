@@ -56,6 +56,10 @@ Future Modeling: I would also like to compare a pre-trained neural network to my
 ### Deployment 
 Text Ascent has been deployed as a flask-enabled web app [traverse.sherzyang.com](https://traverse.sherzyang.com) on an EC2 instance. The app uses brython to interact between python functions and html. 
 
+![web_app_demo1 image](web_app_demo1.png)
+![web_app_demo2 image](web_app_demo2.png)
+
+#### Future versions
 As part of my interests in search and our [new world of one-shot answers](https://www.wired.com/story/amazon-alexa-search-for-the-one-perfect-answer/)--thank you Alexa, Siri and Google Home--I plan on deploying Text Ascent as an Amazon Alexa skill. The skill will allow a user to "scroll" or "traverse" along a gradient of simpler to more complex summaries on a topic just like telling Alexa to play a song louder or softer. I believe creating options in content will expand us beyond the world of one-shot answers in a positive way. 
 
 Additionally, I am eager to grow the corpus to include books from Project Guttenberg and beyond. If you have some content you'd like to see added to the current library of wikipedia articles please send me a message on [LinkedIn](www.linkedin.com/in/sherzyang). I've seen several web extensions that grade a book's reading difficulty on Amazon or Goodreads ([Read Up](http://www.arialvetica.com/readup/) is a great one). Those products inspire me to develop a corpus-free search functionality for Text Ascent in the future. I envision Text Ascent becoming much more useful when it can return Google or Bing web search API enabled content.   
