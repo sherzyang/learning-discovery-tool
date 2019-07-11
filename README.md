@@ -1,7 +1,7 @@
 # Text Ascent
 A tool to upskill with friends
 
-[Presentation of Text Ascent, PDF]
+[Presentation of Text Ascent, PDF](text_ascent_presentation.pdf)
 
 ### Background
 I've often found myself reading an article, say on data science, and wondering, where can I read something simpler on this topic? I realized I wasn't the only one when a friend posted a similar question on LinkedIn. She asked how to find articles in a specific range between most simple and most complex. I realized we don't have an easy system for that type of search besides manually reading for a good fit. Building on my interests in web search, I created Text Ascent, a web app that uses unsupervised ML to help users discover content based on text complexity. I hope Text Ascent can be one tool used to address searching for content along all the stages of our learning journeys. Central to the goals I have for Text App is for it to make niche topics of interest between people more accessible. 
