@@ -4,7 +4,11 @@ A tool to upskill with friends
 [Presentation of Text Ascent, PDF](text_ascent_presentation.pdf)
 
 ### Background
-I've often found myself reading an article, say on data science, and wondering, where can I read something simpler on this topic? I realized I wasn't the only one when a friend posted a similar question on LinkedIn. She asked how to find articles in a specific range between most simple and most complex. I realized we don't have an easy system for that type of search besides manually reading for a good fit. Building on my interests in web search, I created Text Ascent, a web app that uses unsupervised ML to help users discover content based on text complexity. I hope Text Ascent can be one tool used to address searching for content along all the stages of our learning journeys. Central to the goals I have for Text App is for it to make niche topics of interest between people more accessible. 
+<p> I've often found myself reading an article, say on data science, and wondering, where can I read something simpler on this topic? I realized I wasn't the only one when a friend posted a similar question on LinkedIn. She asked how to find articles in a specific range between most simple and most complex. I realized we don't have an easy system for that type of search besides manually reading for a good fit.
+</p>
+<p>
+Building on my interests in web search, I created Text Ascent, a web app that uses unsupervised ML to help users discover content based on text complexity. I hope Text Ascent can be one tool used to address searching for content along all the stages of our learning journeys. Central to the goals I have for Text App is for it to make niche topics of interest between people more accessible.
+</p>
 
 ![traverse image](traverse_flask/static/img/ted-bryan-yu-5mezpWin6T8-unsplash.jpg)
 Photo Credit: Ted Bryan Yu, Unsplash
@@ -55,6 +59,6 @@ As part of my interests in search and our [new world of one-shot answers](https:
 
 Additionally, I am eager to grow the corpus to include books from Project Guttenberg and beyond. If you have some content you'd like to see added to the current library of wikipedia articles please send me a message on [LinkedIn](www.linkedin.com/in/sherzyang). I've seen several web extensions that grade a book's reading difficulty on Amazon or Goodreads ([Read Up](http://www.arialvetica.com/readup/) is a great one). Those products inspire me to develop a corpus-free search functionality for Text Ascent in the future. I envision Text Ascent becoming much more useful when it can return Google or Bing web search API enabled content.   
 
-### Citations
+### Credits
 * [Werlindo Mangrobang, Visualization and Web App Deployment](https://towardsdatascience.com/plotly-express-yourself-98366e35ad0f) 
 * [Kayli Leung, Brython](https://github.com/kayschulz/travel_destination_recommendation/blob/master/travel_destination_recommendation/recommend.py)
