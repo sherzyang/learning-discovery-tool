@@ -26,7 +26,7 @@ These files are saved in an AWS S3 bucket to allow make the web app accessible.
 [Data Preparation Notebook](data_preparation.ipynb)
 
 ### Modeling
-The current model uses cosine distance between the top 20 features of importance in corpus vectors and user input vectors to return similar content from the library to user input. The model features were created with TF-IDF vectorizer. TF-IDF vectorizer  splits the words in the corpus documents, removes stop words, and computs a term frequency for each word in each document, adjusted for how frequently the word appears in the corpus. In other words, uncommon words are given more weight than commonly used words.  
+The current model uses cosine distance between the top 20 features of importance in corpus vectors and user input vectors to return similar content from the library to user input. The model features were created with TF-IDF vectorizer. TF-IDF vectorizer  splits the words in the corpus documents, removes stop words, and computes a term frequency for each word in each document, adjusted for how frequently the word appears in the corpus. In other words, uncommon words are given more weight than commonly used words.  
 
 #### Reproduce this model: 
 * Get a list of documents of interest and format into a dataframe like ```clean_df```. Get text difficulty scores using TextStat.
