@@ -54,7 +54,7 @@ Future Modeling: I would also like to compare a pre-trained neural network to my
 [Evaluation Notebook](evaluation_notebook.ipynb)
 
 ### Deployment 
-Text Ascent has been deployed as a flask-enabled web app [traverse.sherzyang.com](https://traverse.sherzyang.com) on an EC2 instance. The app uses brython to interact between python functions and html. 
+Text Ascent has been deployed as a flask-enabled web app [traverse.sherzyang.com](https://traverse.sherzyang.com) on an EC2 instance. The app uses brython to interact between python functions and html. Below are two images from the web app. Given any user input text, the model will output related articles from the library with links in the title to full length articles. Users can scroll or traverse from simpler content to more complex content and the table will update accordingly.
 
 ![web_app_demo1 image](web_app_demo1.png)
 ![web_app_demo2 image](web_app_demo2.png)
