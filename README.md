@@ -10,7 +10,7 @@ I've often found myself reading an article, say on data science, and wondering, 
 
 ### CRISP-DM
 ### Business Understanding
-Building on my interests in web search, I created Text Ascent, a web app that uses unsupervised ML to help users discover content based on text complexity. I hope Text Ascent can be one tool used to address searching for content along all the stages of our learning journeys. Central to the goals I have for Text App is for it to make niche topics of interest between people more accessible.
+Building on my interests in web search, I created Text Ascent, a web app that uses unsupervised ML to help users discover content based on text complexity. I hope Text Ascent can be one tool used to address searching for content along all the stages of our learning journeys. Central to the goals I have for Text Ascent is for it to make niche topics of interest between people more accessible.
 
 ![traverse image](traverse_flask/static/img/ted-bryan-yu-5mezpWin6T8-unsplash.jpg)
 Photo Credit: Ted Bryan Yu, Unsplash
